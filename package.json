@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UlysseARNAUD-IPSSI/tests-projet-crm.git"
+  },
+  "bugs": {
+    "url": "https://github.com/UlysseARNAUD-IPSSI/tests-projet-crm/issues"
+  },
+  "homepage": "https://github.com/UlysseARNAUD-IPSSI/tests-projet-crm#readme",
+  "devDependencies": {
+    "jest": "^26.1.0"
+  }
+}
