@@ -1,0 +1,78 @@
+version: '3.6'
+services:
+  # NodeJS
+  frontoffice:
+    container_name: tests-projet-crm-frontoffice
+    image: 'node:latest'
+    working_dir: /home/node/app
+    command: # TODO : Ajouter des commandes : Construction du code source
+      - /bin/sh
+      - '-c'
+      - 'npm install --only=dev'
+    ports:
+      - '80:8000'
+    volumes: # TODO : Chemin à revoir : pointer sur les fichiers correspondant au front
+      - ./:/home/node/app:cached
+
+  # PHP
+  backoffice:
+    container_name: tests-projet-crm-backoffice
+    build: docker/php
+    restart: on-failure
+    ports:
+      - '81:80'
+    depends_on:
+      - db
+    networks:
+      - default
+    volumes:
+      - ./:/usr/share/nginx/html:rw
+
+  # MySQL
+  db:
+    container_name: tests-projet-crm-database
+    image: 'mysql:latest'
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      - MYSQL_DATABASE=${DATABASE_NAME}
+      - MYSQL_USER=${DATABASE_USER}
+      - MYSQL_PASSWORD=${DATABASE_PASSWORD}
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+
+  # Nginx
+  web:
+    container_name: tests-projet-crm-web
+    build: docker/nginx
+    ports:
+      - '8001:80'
+    networks:
+      - default
+    depends_on:
+      - backoffice
+    volumes:
+      - ./:/usr/share/nginx/html:rw
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      # - ./docker/nginx/pools.d/www.conf:/etc/nginx/pools.d/www.conf:ro
+
+  # Adminer
+  adminer:
+    container_name: tests-projet-crm-adminer
+    image: 'adminer:latest'
+    depends_on:
+      - db
+    ports:
+      - '8080:8080'
+
+  # Composer
+  composer:
+    container_name: tests-projet-crm-composer
+    image: 'composer:1.8'
+    command: install
+    depends_on:
+      - backoffice
+    volumes:
+      - ./:/usr/share/nginx/html:rw
+
+networks:
+  default:
