@@ -10,11 +10,17 @@ Création d'un répertoire de contact et de sa gestion (CRUD) afin de créer des
 
 ### Via Docker
 
+Copier le fichier `.env.docker` et renommer-le `.env`.
+Changer les valeurs en fonction de votre installation.
+
 ```bash
 docker-compose up
 ```
 
 ### Via CLI
+
+Copier le fichier `.env.cli` et renommer-le `.env`.
+Changer les valeurs en fonction de votre installation.
 
 ```bash
 sh start.sh
