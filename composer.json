@@ -15,13 +15,14 @@
     "autoload": {
         "psr-4": {
             "Bootstrap\\": "bootstrap",
-            "Tests\\": "tests"
+            "App\\": "src"
         },
-        "classmap": [
-            "bootstrap/App/index.class.php",
-            "bootstrap/BaseDeDonnees/index.class.php",
-            "bootstrap/Routeur/index.class.php",
-            "bootstrap/Routeur/Route/index.class.php"
-        ]
+        "classmap": []
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        },
+        "classmap": []
     }
 }
