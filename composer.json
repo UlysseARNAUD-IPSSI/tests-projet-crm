@@ -1,0 +1,27 @@
+{
+    "name": "ulysse/tests-projet-crm",
+    "type": "project",
+    "require-dev": {
+        "phpunit/phpunit": "^9.2"
+    },
+    "license": "ISC",
+    "authors": [
+        {
+            "name": "Ulysse ARNAUD",
+            "email": "a.ulysse@ecole-ipssi.net"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Bootstrap\\": "bootstrap",
+            "Tests\\": "tests"
+        },
+        "classmap": [
+            "bootstrap/App/index.class.php",
+            "bootstrap/BaseDeDonnees/index.class.php",
+            "bootstrap/Routeur/index.class.php",
+            "bootstrap/Routeur/Route/index.class.php"
+        ]
+    }
+}
