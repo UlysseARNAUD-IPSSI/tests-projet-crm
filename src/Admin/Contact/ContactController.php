@@ -40,7 +40,8 @@ class ContactController {
                 'tags' => json_encode([])
             ]);
         }
-        catch (\Exception $exception) {}
+        catch (\Exception $exception) {
+        }
     }
 
 }

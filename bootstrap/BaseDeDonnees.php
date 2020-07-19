@@ -54,8 +54,8 @@ class BaseDeDonnees
         $attributs = implode(',', $attributs);
 
         $queryString = "INSERT INTO $table ($attributs) VALUES ($valeurs)";
-        $query = $this->pdo->prepare($queryString);
-        $query->execute();
+
+        $this->pdo->exec($queryString);
 
         header('Location:/contact');
     }

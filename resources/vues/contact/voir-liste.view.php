@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../layouts/header.view.php';
 
+echo '<a href="/">Retour à l\'accueil</a>';
+
 echo '<h1>Votre liste de contact</h1>';
 
 echo '<a href="/contact/ajouter">Ajouter un contact</a>';
