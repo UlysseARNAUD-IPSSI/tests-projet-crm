@@ -6,7 +6,7 @@ namespace App\Admin\Utilisateur;
 class UtilisateurController {
 
 
-    public function __construct($params)
+    public function __construct($params = [])
     {
     }
 

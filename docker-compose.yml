@@ -27,6 +27,7 @@ services:
       - default
     volumes:
       - ./:/usr/share/nginx/html:rw
+      - ./docker/php/php.ini-development:/usr/local/etc/php/php.ini
 
   # MySQL
   db:
@@ -39,6 +40,10 @@ services:
       - MYSQL_USER=${DATABASE_USER}
       - MYSQL_PASSWORD=${DATABASE_PASSWORD}
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
+    ports:
+      - 3306:3306
+    networks:
+      - default
 
   # Nginx
   web:

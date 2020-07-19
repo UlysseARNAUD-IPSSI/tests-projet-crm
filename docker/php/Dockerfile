@@ -6,8 +6,14 @@ WORKDIR /usr/share/nginx/html
 
 EXPOSE 9000
 
-RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-configure pdo_mysql --with-pdo-mysql=mysqlnd
+RUN docker-php-ext-configure mysqli --with-mysqli=mysqlnd
+RUN docker-php-ext-install pdo pdo_mysql mysqli
+RUN docker-php-ext-enable pdo pdo_mysql mysqli
 RUN apt-get update
 RUN apt-get install --no-install-recommends --assume-yes --quiet ca-certificates curl git
 
-CMD ["php-fpm"]
+RUN ln -s resources/css public/css
+RUN ln -s resources/js public/js
+
+# CMD ["php-fpm"]
