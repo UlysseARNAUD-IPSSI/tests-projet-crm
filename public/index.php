@@ -12,7 +12,6 @@ $dotenv = Dotenv\Dotenv::createImmutable( __DIR__ . '/../' );
 $dotenv->load();
 $dotenv->required( 'DATABASE_SOURCE' );
 
-
 $app = Bootstrap\App::singleton();
 
 require_once __DIR__ . '/../routes/admin.php';
