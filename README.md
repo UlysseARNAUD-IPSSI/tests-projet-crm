@@ -5,9 +5,8 @@ Création d'un répertoire de contact et de sa gestion (CRUD) afin de créer des
 ## Installation
 
 ### Prérequis
-- PHP 7.4+
-- MySQL 5.7+
-- NodeJS 10+
+- PHP 7.3+ (Testé avec PHP 7.3 sous Docker et PHP 7.4 sous CLI)
+- MySQL 5.7+ (Testé avec la version 8)
 
 ### Via Docker
 
@@ -18,8 +17,8 @@ docker-compose up
 ### Via CLI
 
 ```bash
-npm install --only=dev
-npm start
+sh start.sh
+php -S localhost:8001 server.php
 ```
 
 ## Utilisation
@@ -27,7 +26,7 @@ npm start
 ### Lancer le site
 
 ```
-http://localhost:8000
+http://localhost:8001
 ```
 
 ### Lancer les tests
@@ -35,13 +34,13 @@ http://localhost:8000
 #### Via Docker
 
 ```bash
-<commande à mettre>
+docker exec tests-projet-crm-backoffice vendor/bin/phpunit tests
 ```
 
 ### Via CLI
 
 ```bash
-npm test
+./vendor/bin/phpunit tests
 ```
 
 ## Contribution
